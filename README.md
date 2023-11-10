@@ -27,3 +27,29 @@ make client
 docker build -t your_container_name .
 docker run your_container_name
 ```
+
+## GRPC Requirements
+
+### linux
+
+```bash
+sudo apt-get update
+sudo apt-get install -y protobuf-compiler
+```
+
+### MacOS
+
+```bash
+brew install protobuff 
+```
+
+### Go dependencies (gRPC and Protobuf)
+
+```bash
+go get -u google.golang.org/protobuf/cmd/protoc-gen-go
+go install google.golang.org/protobuf/cmd/protoc-gen-go
+
+go get -u google.golang.org/grpc/cmd/protoc-gen-go-grpc
+go install google.golang.org/grpc/cmd/protoc-gen-go-grpc
+```
+---
