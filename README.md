@@ -7,13 +7,21 @@ This project is a simple microservice design which mocks an API call for fetchin
 - use this code in your terminal to run the server instance:
 
 ```bash
-make server
+# json server
+make json_server
+
+# grpc server
+make grpc_server
 ```
 
 - you can run your client on top of the server by running this:
 
 ```bash
-make client
+# json client
+make json_client
+
+# grpc client
+make grpc_client
 ```
 
 ## Containerization

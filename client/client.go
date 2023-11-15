@@ -6,7 +6,9 @@ import (
 	"fmt"
 	"net/http"
 
+	"github.com/hosseinmirzapur/microservice/proto"
 	"github.com/hosseinmirzapur/microservice/types"
+	"google.golang.org/grpc"
 )
 
 type Client struct {
@@ -36,4 +38,13 @@ func (c *Client) FetchPrice(ctx context.Context, ticker string) (*types.PriceRes
 	}
 
 	return priceResponse, nil
+}
+
+func NewGRPC(remoteAddr string) (proto.PriceFetcherClient, error) {
+	conn, err := grpc.Dial(remoteAddr)
+	if err != nil {
+		return nil, err
+	}
+
+	return proto.NewPriceFetcherClient(conn), nil
 }

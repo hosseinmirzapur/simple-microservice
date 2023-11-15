@@ -1,12 +1,20 @@
 build:
 	go build -o bin/pricefetcher
 
-server: build
+json_server: build
+	./bin/pricefetcher -json
+
+json_client: build
+	./bin/pricefetcher -json -client
+
+grpc_server: build
 	./bin/pricefetcher
 
-client: build
+grpc_client: build
 	./bin/pricefetcher -client
 
 proto:
 	protoc --go_out=. --go_opt=paths=source_relative --go-grpc_out=. \
-	--go-grpc_opt=paths=source_relative routeguide/route_guide.proto
+	--go-grpc_opt=paths=source_relative proto/service.proto
+
+.PHONY: proto
